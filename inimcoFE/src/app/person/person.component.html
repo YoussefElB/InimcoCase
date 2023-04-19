@@ -1,0 +1,26 @@
+<div>
+    <h2>{{ title }}</h2>
+    <form [formGroup]="personForm" (ngSubmit)="onSubmit(personForm)">
+        <div>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" formControlName="firstName" required>
+          </div>
+          <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" formControlName="lastName" required>
+          </div>
+          <div>
+            <label for="socialSkills">Social Skills:</label>
+            <input type="text" id="socialSkills" name="socialSkills" formControlName="socialSkills">
+          </div>
+      <div>
+        <label for="socialAccounts">Social Accounts:</label>
+        <div *ngFor="let account of person.socialAccounts; let i = index">
+          <input type="text" name="accountType{{i}}" formControlName="account.type" placeholder="Type">
+          <input type="text" name="accountAddress{{i}}" formControlName="account.address" placeholder="Address">
+        </div>
+        <button type="button" (click)="addSocialAccount()">Add Social Account</button>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
